@@ -113,12 +113,12 @@ mainmodal() {
 	pashua_start "$pashua_config_main"
 }
 
-#settingsmodal() {
-#	title="$1"
-#	input="$2"
-#	source "$MYDIR/pashua_config_settings.sh"
-#	pashua_start "$pashua_config_settings"
-#}
+settingsmodal() {
+	title="$1"
+	input="$2"
+	source "$MYDIR/pashua_config_settings.sh"
+	pashua_start "$pashua_config_settings"
+}
 
 #pathlist() {
 #	echo "--- --- --- --- --- --- ---"
