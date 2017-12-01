@@ -57,6 +57,10 @@ APPNAME="Stream Writer 0.1"
 
 # --- - --- - --- - --- - --- - --- - --- - --- VARIABLES
 
+# Change this to the path you want the textfiles in
+textfile="$HOME/Dropbox/Projects/Streaming/Setup/Text"
+
+
 #P1NAME="Player 1"
 #P1SCORE="0"
 #P2NAME="Player 2"
@@ -135,35 +139,34 @@ mainmodal() {
 #}
 
 
-settings_read() {
-# xxx If settings file doesn't exist
-# Write Default
-	configfile='$HOME/.cp_uploader.conf'
-	configfile_secured='/tmp/cool.cfg'
-
-	# check if the file contains something we don't want
-	if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
-		echo "Config file is unclean, cleaning it..." >&2
-		# filter the original to a new file
-		egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
-		configfile="$configfile_secured"
-	fi
-
-	# now source it, either the original or the filtered variant
-	source "$configfile"
-
-	echo "Reading Settings file at: $configfile"
-	
-	echo -e "\n…Done Reading Settings.\n"
-
-	echo -e "\n--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---\n"
-	
-}
+#settings_read() {
+## xxx If settings file doesn't exist
+## Write Default
+#	configfile='$HOME/.cp_uploader.conf'
+#	configfile_secured='/tmp/cool.cfg'
+#
+#	# check if the file contains something we don't want
+#	if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
+#		echo "Config file is unclean, cleaning it..." >&2
+#		# filter the original to a new file
+#		egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
+#		configfile="$configfile_secured"
+#	fi
+#
+#	# now source it, either the original or the filtered variant
+#	source "$configfile"
+#
+#	echo "Reading Settings file at: $configfile"
+#	
+#	echo -e "\n…Done Reading Settings.\n"
+#
+#	echo -e "\n--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---\n"
+#	
+#}
 
 textfile_read() {
 # xxx If settings file doesn't exist
 # Write Default
-	textfile="$HOME/Dropbox/Projects/Streaming/Setup/Text"
 	textfile_secured='/tmp/cool.cfg'
 
 	# check if the file contains something we don't want
