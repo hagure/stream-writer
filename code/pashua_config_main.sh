@@ -1,7 +1,9 @@
 pashua_config_main="
+
 # Set window title
 *.title = "$1"
-
+*.autosavekey = stream-writer
+*.transparency = .7
 
 # Player 1 Name
 p1name.type = combobox
