@@ -33,6 +33,8 @@
 # - Use Bracket (Smash, BurningMeter, Challonge) API to read player names for tourney, then write it to playername cache.
 # - Check for changes periodically to account for Late Adds
 # - Settings: Add settings for bracket, stream & other links.
+# - Panel: Commentator Names & Twitters
+# - Event Name & Game
 
 # PROGRESS --- - --- - --- - --- - --- - --- - --- - ---
 
@@ -58,7 +60,7 @@ APPNAME="Stream Writer 0.1"
 # --- - --- - --- - --- - --- - --- - --- - --- VARIABLES
 
 # Change this to the path you want the textfiles in
-textfile="$HOME/Dropbox/Projects/Streaming/Setup/Text"
+TEXTFILEDIR="$HOME/Dropbox/Projects/Streaming/Setup/Text"
 
 
 #P1NAME="Player 1"
@@ -142,8 +144,8 @@ mainmodal() {
 #settings_read() {
 ## xxx If settings file doesn't exist
 ## Write Default
-#	configfile='$HOME/.cp_uploader.conf'
-#	configfile_secured='/tmp/cool.cfg'
+#	configfile='$HOME/.stream_writer.conf'
+#	configfile_secured='/tmp/stream_writer_temp.conf'
 #
 #	# check if the file contains something we don't want
 #	if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
@@ -170,20 +172,20 @@ textfile_read() {
 	textfile_secured='/tmp/cool.cfg'
 
 	# check if the file contains something we don't want
-#	if egrep -q -v '^#|^[^ ]*=[^;]*' "$textfile"; then
+#	if egrep -q -v '^#|^[^ ]*=[^;]*' "$TEXTFILEDIR"; then
 #		echo "Config file is unclean, cleaning it..." >&2
 #		# filter the original to a new file
-#		egrep '^#|^[^ ]*=[^;&]*'  "$textfile" > "$textfile_secured"
+#		egrep '^#|^[^ ]*=[^;&]*'  "$TEXTFILEDIR" > "$textfile_secured"
 #		textfile="$textfile_secured"
 #	fi
 
 	
-	echo "Reading Settings file at: $textfile"
+	echo "Reading Settings file at: $TEXTFILEDIR"
 	
-	P1NAME=`cat "$textfile/p1_name.txt"`
-	P2NAME=`cat "$textfile/p2_name.txt"`
-	P1SCORE=`cat "$textfile/p1_score.txt"`
-	P2SCORE=`cat "$textfile/p2_score.txt"`
+	P1NAME=`cat "$TEXTFILEDIR/p1_name.txt"`
+	P2NAME=`cat "$TEXTFILEDIR/p2_name.txt"`
+	P1SCORE=`cat "$TEXTFILEDIR/p1_score.txt"`
+	P2SCORE=`cat "$TEXTFILEDIR/p2_score.txt"`
 	
 	echo -e "\n…Done Reading Settings.\n"
 
@@ -192,10 +194,10 @@ textfile_read() {
 }
 
 textfile_write() {
-	echo "$1" > "$textfile/p1_name.txt"
-	echo "$2" > "$textfile/p2_name.txt"
-	echo "$3" > "$textfile/p1_score.txt"
-	echo "$4" > "$textfile/p2_score.txt"
+	echo "$1" > "$TEXTFILEDIR/p1_name.txt"
+	echo "$2" > "$TEXTFILEDIR/p2_name.txt"
+	echo "$3" > "$TEXTFILEDIR/p1_score.txt"
+	echo "$4" > "$TEXTFILEDIR/p2_score.txt"
 }
 
 settings_write() {
