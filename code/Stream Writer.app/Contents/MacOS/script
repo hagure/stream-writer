@@ -16,7 +16,18 @@
 # - X Refresh Button
 # - X Save Button
 
+<<<<<<< HEAD
 # TODOS 0.2 --- - --- - --- - --- - --- - --- - --- - --- ADDING SETTINGS
+=======
+# TODOS 0.2 --- - --- - --- - --- - --- - --- - --- - --- SCORES
+
+# - X Add Swap Scores Button
+# - X Add +/- Scores Buttons
+# - X Add Reset Button
+
+
+# TODOS 0.3 --- - --- - --- - --- - --- - --- - --- - --- ADDING SETTINGS
+>>>>>>> scores-buttons
 
 # - Settings: Create Settings Dialog.
 # - Settings: Allow user to choose & select which folder text files will be created in.
@@ -53,7 +64,11 @@ DATEC=$(date +"%Y-%m-%d")
 THEDATE=$DATEC
 
 # APPNAME is the name of the App
+<<<<<<< HEAD
 APPNAME="Stream Writer 0.1"
+=======
+APPNAME="Stream Writer 0.2"
+>>>>>>> scores-buttons
 
 # --- - --- - --- - --- - --- - --- - --- - --- READ SETTINGS
 
@@ -209,8 +224,19 @@ initialize() {
 	db=0
 	cb=0
 	sb=0
+<<<<<<< HEAD
 	reset=0
 
+=======
+	swapplayers=0
+	swapscores=0
+	swapboth=0
+	reset=0
+	p1scoreup=0
+	p1scoredown=0
+	p2scoreup=0
+	p2scoredown=0
+>>>>>>> scores-buttons
 	# settings_read 
 	textfile_read 
 
@@ -248,14 +274,87 @@ main() {
 	#echo "  db = $db"
 	#echo -e " --- - --- - --- \n"
 
+<<<<<<< HEAD
+=======
+
 	#--- - --- - --- - --- - --- - --- - --- - ---
-	# RESET
-	if [ $reset == 1 ]; then
-		echo "ｒｅｓｅｔ"
+	# P1 SCORE +1
+	if [ $p1scoreup == 1 ]; then
+		echo "ｐ１ｓｃｏｒｅ　↑"
+		(( p1score++ ))
+		textfile_write "$p1name" "$p2name" "$p1score" "$p2score"
+		main
+	fi 
+
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P1 SCORE -1
+	if [ $p1scoredown == 1 ]; then
+		echo "ｐ１ｓｃｏｒｅ　↓"
+		(( p1score-- ))
+		textfile_write "$p1name" "$p2name" "$p1score" "$p2score"
+		main
+	fi 
+
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P2 SCORE +1
+	if [ $p2scoreup == 1 ]; then
+		echo "ｐ１ｓｃｏｒｅ　↑"
+		(( p2score++ ))
+		textfile_write "$p1name" "$p2name" "$p1score" "$p2score"
+		main
+	fi 
+
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P2 SCORE -1
+	if [ $p2scoredown == 1 ]; then
+		(( p2score-- ))
+		textfile_write "$p1name" "$p2name" "$p1score" "$p2score"
+		main
+	fi 
+
+
+
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# SWAP PLAYERS
+	if [ $swapplayers == 1 ]; then
+		echo "ｓｗａｐ　ｐｌａｙｅｒｓ"
 		textfile_write "$p2name" "$p1name" "$p1score" "$p2score"
 		main
 	fi 
 
+
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# SWAP SCORES
+	if [ $swapscores == 1 ]; then
+		echo "ｓｗａｐ ｓｃｏｒｅｓ"
+		textfile_write "$p1name" "$p2name" "$p2score" "$p1score"
+		main
+	fi 
+
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# SWAP BOTH
+	if [ $swapboth == 1 ]; then
+		echo "ｓｗａｐ ｂｏｔｈ"
+		textfile_write "$p2name" "$p1name" "$p2score" "$p1score"
+		main
+	fi 
+>>>>>>> scores-buttons
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# RESET
+	if [ $reset == 1 ]; then
+		echo "ｒｅｓｅｔ"
+<<<<<<< HEAD
+		textfile_write "$p2name" "$p1name" "$p1score" "$p2score"
+		main
+	fi 
+
+=======
+		textfile_write "Player 1" "Player 2" "0" "0"
+		main
+	fi 
+
+
+>>>>>>> scores-buttons
 	#--- - --- - --- - --- - --- - --- - --- - ---
 	# CANCEL
 
