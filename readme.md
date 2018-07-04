@@ -5,7 +5,6 @@
 
 ## Requirements
 
-- [Cocoa Dialog](https://cocoadialog.com/v2/)
 - [Pashua](https://www.bluem.net/en/projects/pashua/)
 
 ## Setup
