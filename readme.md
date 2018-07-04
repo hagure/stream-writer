@@ -1,4 +1,4 @@
-# Stream Writer 0.1
+# Stream Writer 0.2
 
 ## What it does:
 - Updates contents of specific text files to be used as Text Objects in streaming apps such as OBS & GameShow
