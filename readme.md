@@ -1,7 +1,7 @@
 # Stream Writer 0.2
 
 ## What it does:
-- Updates contents of specific text files to be used as Text Objects in streaming apps such as OBS & GameShow
+- Updates contents of specific text files to be used as Text Objects in streaming apps such as OBS & GameShow. 
 
 ## Requirements
 
@@ -24,6 +24,8 @@
 - p1_score.txt
 - p2_name.txt
 - p2_score.txt
+- round_name.txt
+- game_name.txt
 
 ## Warning: 
 
@@ -31,11 +33,12 @@
 - Just make sure there isn't a player named "rm –rf" or "sudo killallhumans" or something.
 
 
+# Setup
+
 # Usage
 
-##  TBD
 
-The ability to set the locations of the text files without editing the source has not been coded in yet (expect this in 0.3). For now, you can edit line 70 in 'main.sh' to point to the directory you'd like the text files to be created at.
+
 
 # Known Bugs
 
@@ -43,11 +46,25 @@ The ability to set the locations of the text files without editing the source ha
 
 #	Version History
 
-###	0.1
+#	0.1
 - Initial release
 
-###	0.2 
+#	0.2 
 - Added +/- buttons to increment/decrement scores
 - Added "Swap Scores" button
 - Added "Swap Both" button
 - Added "Reset" button
+
+# 	0.3:  ROUND/GAME NAMES
+- Added Field: Round Name.
+- Added Field: Game Name.
+- Added Button: Casuals.
+
+# 	0.5: ADDING SETTINGS
+- Settings: Create Settings Dialog.
+- Settings: Allow user to choose & select which folder text files will be created in.
+- Settings: Allow user to rename text files.
+
+# 	0.5.5: SETTINGS DEFAULTS
+- Added: "Default" Buttons to Settings Text Files
+

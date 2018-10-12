@@ -32,9 +32,11 @@
 # - X Settings: Allow user to choose & select which folder text files will be created in.
 # - X Settings: Allow user to rename text files.
 
+# 0.5.5 --- - --- - --- - --- - --- - --- - --- - --- SETTINGS DEFAULTS
+# - Add "Default" Buttons to Settings Text Files
+
 # TODOS 0.6 --- - --- - --- - --- - --- - --- - --- - --- ERROR CHECKING
 # - Checking for filename/dir errors
-# - Add "Default" Buttons to Settings Text Files
 
 # TODOS 1.0 --- - --- - --- - --- - --- - --- - --- - --- PLAYER NAME CACHING
 # - Write Player Names to a cached file
@@ -52,6 +54,7 @@
 # PROGRESS --- - --- - --- - --- - --- - --- - --- - ---
 
 # 2017-11-30	Creation
+# 2018-10-12	Added Default Buttons to Settings Modal
 
 # --- - --- - --- - --- - --- - --- - --- - --- INITIALIZE PASHUA & COCOADIALOG
 
@@ -121,7 +124,15 @@ settingsmodal() {
 	input="$2"
 	source "$MYDIR/pashua_config_settings.sh"
 	pashua_start "$pashua_config_settings"
-	settings_write $gamenamefile $p1namefile $p1scorefile $p2namefile $p2scorefile $roundnamefile $textfiledir
+
+	settingsmodal_cleanup
+
+	if [ $cb != 1 ]
+	then
+		settings_write $gamenamefile $p1namefile $p1scorefile $p2namefile $p2scorefile $roundnamefile "$textfiledir"
+	else 
+	fi
+	
 	main
 }
 
@@ -163,6 +174,58 @@ settings_write() {
 	echo "ROUNDNAMEFILE=\"$6\"" >> "$configfile2"
 	echo "TEXTFILEDIR=\"$7\"" >> "$configfile2"
 }
+settingsmodal_cleanup() {
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P1 NAME DEFAULT
+	if [ $p1namefiledefault == 1 ]; then
+		echo "ｐ１ｎａｍｅ　ｄｅｆａｕｌｔ"
+		settings_write $gamenamefile "p1_name.txt" $p1scorefile $p2namefile $p2scorefile $roundnamefile "$textfiledir"
+		initialize
+		settingsmodal
+	fi 
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P1 SCORE DEFAULT
+	if [ $p1scorefiledefault == 1 ]; then
+		echo "ｐ１ｓｃｏｒｅ　ｄｅｆａｕｌｔ"
+		settings_write $gamenamefile $p1namefile "p1_score.txt" $p2namefile $p2scorefile $roundnamefile "$textfiledir"
+		initialize
+		settingsmodal
+	fi 
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P2 NAME DEFAULT
+	if [ $p2namefiledefault == 1 ]; then
+		echo "ｐ２ｎａｍｅ　ｄｅｆａｕｌｔ"
+		settings_write $gamenamefile $p1namefile $p1scorefile "p2_name.txt" $p2scorefile $roundnamefile "$textfiledir"
+		initialize
+		settingsmodal
+	fi 
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# P2 SCORE DEFAULT
+	if [ $p2scorefiledefault == 1 ]; then
+		echo "ｐ２ｓｃｏｒｅ　ｄｅｆａｕｌｔ"
+		settings_write $gamenamefile $p1namefile $p1scorefile $p2namefile "p2_score.txt" $roundnamefile "$textfiledir"
+		initialize
+		settingsmodal
+	fi 
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# GAME NAME DEFAULT
+	if [ $gamenamefiledefault == 1 ]; then
+		echo "ｇａｍｅｎａｍｅ　ｄｅｆａｕｌｔ"
+		settings_write "game_name.txt" $p1namefile $p1scorefile $p2namefile $p2scorefile $roundnamefile "$textfiledir"
+		initialize
+		settingsmodal
+	fi 
+	#--- - --- - --- - --- - --- - --- - --- - ---
+	# ROUND NAME DEFAULT
+	if [ $roundnamefiledefault == 1 ]; then
+	echo "ｒｏｕｎｄｎａｍｅ　ｄｅｆａｕｌｔ"
+		settings_write $gamenamefile $p1namefile $p1scorefile $p2namefile $p2scorefile "round_name.txt" "$textfiledir"
+		initialize
+		settingsmodal
+	fi 
+	#--- - --- - --- - --- - --- - --- - --- - ---
+}
+
 
 textfile_read() {
 # xxx If settings file doesn't exist
@@ -214,6 +277,13 @@ initialize() {
 	p1scoredown=0
 	p2scoreup=0
 	p2scoredown=0
+	p1namefiledefault=0
+	p1scorefiledefault=0
+	p2namefiledefault=0
+	p2scorefiledefault=0
+	roundnamefiledefault=0
+	gamenamefiledefault=0
+
 	settings_read 
 	textfile_read 
 
