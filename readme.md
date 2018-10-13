@@ -1,4 +1,4 @@
-# Stream Writer 0.2
+# Stream Writer 0.5.5
 
 ## What it does:
 - Updates contents of specific text files to be used as Text Objects in streaming apps such as OBS & GameShow. 
@@ -37,12 +37,13 @@
 
 # Usage
 
-
+Use it pretty much like Panel Writer.
 
 
 # Known Bugs
 
 - If StreamWriter gets stuck in a loop, and is unable to be closed via the usual methods, hit the Reset button first, then exit the app.
+- Settings Panel is a bit buggy.
 
 #	Version History
 
@@ -55,16 +56,16 @@
 - Added "Swap Both" button
 - Added "Reset" button
 
-# 	0.3:  ROUND/GAME NAMES
+# 	0.3:  Round/Game Names
 - Added Field: Round Name.
 - Added Field: Game Name.
 - Added Button: Casuals.
 
-# 	0.5: ADDING SETTINGS
+# 	0.5: Adding Settings
 - Settings: Create Settings Dialog.
 - Settings: Allow user to choose & select which folder text files will be created in.
 - Settings: Allow user to rename text files.
 
-# 	0.5.5: SETTINGS DEFAULTS
+# 	0.5.5: Settings Defaults
 - Added: "Default" Buttons to Settings Text Files
 
